@@ -21,3 +21,17 @@ body {
     width: 100px;
     height: auto;
 }
+
+.about-container {
+    margin-top: 50px;
+}
+
+.about-heading {
+    text-align:center;
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
