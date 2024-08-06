@@ -13,11 +13,19 @@ namespace LearnSignLanguageApp.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Sends user to he Index page (here it is the home screen)
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Sends user to the Privacy page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Privacy()
         {
             return View();
