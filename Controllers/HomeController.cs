@@ -31,6 +31,33 @@ namespace LearnSignLanguageApp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Sends user to the Learn page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Learn()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Sends user to the Games page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Games()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Sends user to the Quizzes page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Quizzes()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
