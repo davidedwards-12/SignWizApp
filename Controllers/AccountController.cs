@@ -64,7 +64,7 @@ namespace LearnSignLanguageApp.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Profile", "Account");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -84,20 +84,23 @@ namespace LearnSignLanguageApp.Controllers
 
         // GET: /Account/Profile
         [HttpGet]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            // Retrieve user information to display in the profile view
-            // Example: Replace this with actual logic to get user data
-            var user = new ProfileViewModel
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                Username = "testuser",
-                Email = "testuser@example.com",
-                FirstName = "John",
-                LastName = "Doe",
-                ProfilePictureUrl = "/images/default-profile.png"
+                return RedirectToAction("Login");
+            }
+
+            var model = new ProfileViewModel
+            {
+                Username = user.UserName,
+                Email = user.Email,
+                //FirstName = user.FirstName,
+                //LastName = user.LastName,
             };
 
-            return View(user);
+            return View(model);
         }
     }
 }
