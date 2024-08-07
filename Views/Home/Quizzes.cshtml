@@ -1,6 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Quizzes";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>This is page for quizzes.</p>
+<!-- Title -->
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>@ViewData["Title"]</h1>
+            <p>Welcome to SignWiz Quiz! Test your knowledge of everything that you have been learning so far!</p>
+            <p>Select the module you would like to be tested on.</p>
+        </div>
+    </div>
+
+    <!-- Quizzes Selection -->
+    <div class="row">
+        <!-- Quiz for Module 1 -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Quiz 1: The Alphabet</h5>
+                    <p class="card-text">Test your knowledge of the sign language alphabet.</p>
+                    <a href="@Url.Action("QuizModule1", "Quizzes")" class="btn btn-primary">Start Quiz 1</a>
+                </div>
+            </div>
+        </div>
+        <!-- Quiz for Module 2 -->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Quiz 2: Everyday Phrases</h5>
+                    <p class="card-text">Test your knowledge of common everyday phrases.</p>
+                    <a href="@Url.Action("QuizModule2", "Quizzes")" class="btn btn-primary">Start Quiz 2</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more quizzes as needed -->
+    </div>
+</div>

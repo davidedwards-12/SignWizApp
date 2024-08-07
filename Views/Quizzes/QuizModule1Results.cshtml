@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Quiz 1: The Alphabet - Results";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>@ViewData["Title"]</h1>
+            <p>Your score: @ViewBag.Score</p>
+            <a href="@Url.Action("Quizzes", "Home")" class="btn btn-primary">Back to Quizzes</a>
+        </div>
+    </div>
+</div>

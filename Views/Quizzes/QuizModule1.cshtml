@@ -1,0 +1,34 @@
+﻿@model LearnSignLanguageApp.Models.QuizModule1ViewModel
+
+@{
+    ViewData["Title"] = "Quiz 1: The Alphabet";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>@ViewData["Title"]</h1>
+            <p>Test your knowledge of the sign language alphabet by answering the following questions.</p>
+        </div>
+    </div>
+
+    <form asp-action="QuizModule1Results" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!-- Question 1 -->
+        <div class="form-group">
+            <label>How do you sign the letter 'A'?</label>
+            <input type="text" name="Question1" class="form-control" />
+        </div>
+
+        <!-- Question 2 -->
+        <div class="form-group">
+            <label>How do you sign the letter 'B'?</label>
+            <input type="text" name="Question2" class="form-control" />
+        </div>
+
+        <!-- Add more questions as needed -->
+
+        <button type="submit" class="btn btn-primary">Submit Quiz</button>
+    </form>
+</div>
