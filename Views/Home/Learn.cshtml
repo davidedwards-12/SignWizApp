@@ -1,6 +1,67 @@
 ﻿@{
     ViewData["Title"] = "Learn";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>This is page for learning.</p>
+<!-- Title -->
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>@ViewData["Title"]</h1>
+            <p>Welcome to SignWiz Learning! Start your journey to mastering sign language with our interactive modules!</p>
+        </div>
+    </div>
+
+    <!-- Learning Modules Section -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Module 1: Basics</h5>
+                    <p class="card-text">Learn the basics of sign language, including the alphabet and simple words.</p>
+                    <a href="@Url.Action("Module1", "Learn")" class="btn btn-primary">Start Module 1</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Module 2: Everyday Phrases</h5>
+                    <p class="card-text">Practice everyday phrases and common expressions in sign language.</p>
+                    <a href="@Url.Action("Module2", "Learn")" class="btn btn-primary">Start Module 2</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Module 3: Conversations</h5>
+                    <p class="card-text">Learn how to hold basic conversations and improve your sign language fluency.</p>
+                    <a href="@Url.Action("Module3", "Learn")" class="btn btn-primary">Start Module 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="row">
+        <div class="col text-center">
+            <h2>Your Progress</h2>
+            <p>Track your progress as you complete each module.</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Info -->
+    <div class="row mt-4">
+        <div class="col">
+            <h2>Additional Resources</h2>
+            <ul class="list-unstyled">
+                <li><a href="https://www.example.com" target="_blank">Sign Language Dictionary</a></li>
+                <li><a href="https://www.example.com" target="_blank">Video Tutorials</a></li>
+                <li><a href="https://www.example.com" target="_blank">Community Forums</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
