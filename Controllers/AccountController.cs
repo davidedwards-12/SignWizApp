@@ -2,11 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using LearnSignLanguageApp.Controllers;
 using LearnSignLanguageApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LearnSignLanguageApp.Controllers
 {
     public class AccountController : Controller
     {
+        /*
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+        */
+
         // GET: /Account/Register
         [HttpGet]
         public IActionResult Register()
@@ -17,15 +29,23 @@ namespace LearnSignLanguageApp.Controllers
         // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Add logic to handle user registration, such as saving to a database
-                // For example:
-                // _userService.RegisterUser(model);
-
-                return RedirectToAction("Index", "Home");
+                /*
+                var user = new IdentityUser { UserName = model.Username, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                */
             }
             return View(model);
         }
