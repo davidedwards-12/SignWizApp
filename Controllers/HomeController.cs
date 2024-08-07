@@ -1,4 +1,5 @@
 ﻿using LearnSignLanguageApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -62,6 +63,12 @@ namespace LearnSignLanguageApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [Authorize]
+        public IActionResult SecurePage()
+        {
+            return View();
         }
     }
 }

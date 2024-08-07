@@ -8,16 +8,15 @@ namespace LearnSignLanguageApp.Controllers
 {
     public class AccountController : Controller
     {
-        /*
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        */
 
         // GET: /Account/Register
         [HttpGet]
@@ -33,8 +32,7 @@ namespace LearnSignLanguageApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*
-                var user = new IdentityUser { UserName = model.Username, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -45,7 +43,6 @@ namespace LearnSignLanguageApp.Controllers
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                */
             }
             return View(model);
         }
@@ -60,17 +57,15 @@ namespace LearnSignLanguageApp.Controllers
         // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Add logic to handle user login, such as checking credentials
-                // For example:
-                // var result = _userService.LoginUser(model);
-                // if (result)
-                // {
-                //     return RedirectToAction("Index", "Home");
-                // }
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
@@ -80,11 +75,9 @@ namespace LearnSignLanguageApp.Controllers
         // POST: /Account/Logout
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            // Add logic to handle user logout
-            // For example:
-            // _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
         }
